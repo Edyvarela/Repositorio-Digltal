@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     padding-top: 0px;
     padding-bottom: 20px;
@@ -7,6 +11,44 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+element {
+    outline:none;
+}
+
+input {
+    text-decoration: none;
+}
+
+input:focus {
+    outline: none ! important;
+}
+
+.full_screen_pdf_viewer {
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    padding: 80px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 1s ease-out;
+}
+
+.full_screen_pdf_viewer object  {
+    background-color: #ffffff;
+    flex: 1;
+    height: 100%;
+}
+
+.full_screen_pdf_viewer object iframe {
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -111,7 +153,6 @@ textarea {
         margin-left: 32px;
     }
 
-
     .Container-search {
         display: flex;
         justify-content: center;
@@ -121,43 +162,30 @@ textarea {
         
     }
 
-    /* .search {
-        margin-top: 100px;
-        padding-right: 8px;
-        display: flex;
-        width: 00px;
-        background-color: white;
-        justify-content: center;
-        align-items: center;
-        border-radius: 40px;
-        border-color: none;
-    } */
-
     input {
-        width: 300px;
-        height: 60px;   
-        border-radius: 0px 40px 40px 0px; 
+        border-color: white;
+        border-radius: 0px 40px 40px 0px;
+        height: 40px;
+        margin-left: 0px;
         text-align: center;
-        margin-left: 0px;   
-        border-color: white;     
+        width: 100%;
     }
 
     input, select, textarea {
         max-width: 500px;
-        font-size: 24px;
+        font-size: 20px;
         border-color: none;
         
     }
 
     .Icon {
-        color: white;
-        display: flex;
-        width: 60px;
-        height: 60px;
+        align-items: center;
         background-color: red;
         border-radius: 40px 0px 0px 40px;
-        align-items: center;
+        color: white;
+        display: flex;
         justify-content: center;
+        padding: 8px;
     }
 
     .Encabezado {
@@ -358,13 +386,19 @@ body {
   margin-bottom: 32px;
 }
 .card {
-  margin: 10px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  width: 280px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin: 10px;
+    overflow: hidden;
+    width: 280px;
 }
+
+.card * {
+    pointer-events: none;
+}
+
 .card-header img {
   width: 100%;
   height: 200px;
