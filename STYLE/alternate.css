@@ -25,6 +25,14 @@ input:focus {
     width: 100%;
 }
 
+.card {
+    cursor: pointer;
+}
+
+.card * {
+    pointer-events: none;
+}
+
 .dot {
     background-color: #ffffff;
     border-radius: 7px;
