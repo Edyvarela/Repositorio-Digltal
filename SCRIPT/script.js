@@ -1,5 +1,3 @@
-var DEFAULT_DATA = [];
-var FILTERED_DATA = [];
 const FAKE_COVERS = [
 	'https://t3.ftcdn.net/jpg/02/49/37/86/360_F_249378634_OxdxhGcROdOPnEL6ESAVdfbsxp8COfsd.jpg',
 	'http://2.bp.blogspot.com/-f7BIZsV_GeU/TybLEisjvCI/AAAAAAAABK4/sCgXCk84LmI/s1600/LIBRO-DE-ORO-DEL-FUTBOL-MEXICANO.jpg',
@@ -14,7 +12,10 @@ const FAKE_COVERS = [
 	'https://imusic.b-cdn.net/images/item/original/098/9786073807098.jpg'
 ];
 const MAX_ITEMS_PER_PAGE = 4;
-const PAGE = 0;
+
+var DATA_DEFAULT = [];
+var DATA_FILTERED = [];
+var PAGE = 0;
 
 const DOMReady = (callback) => {
 	if (document.readyState === 'interactive' || document.readyState === 'complete') {
@@ -93,7 +94,7 @@ const loadDefaultData = () => {
 	  		console.log( error );
 	  	},
 	  	complete: ( data ) => {
-	  		DEFAULT_DATA = result;
+	  		DATA_DEFAULT = result;
 
 	  		reloadBooks();
 	  	}
@@ -101,7 +102,8 @@ const loadDefaultData = () => {
 }
 
 const buildPages = () => {
-	let pages = Math.ceil( DEFAULT_DATA.length / MAX_ITEMS_PER_PAGE );
+	$("#page_container").empty();
+	let pages = Math.ceil( DATA_FILTERED.length / MAX_ITEMS_PER_PAGE );
 
 	for (let i=0; i < pages; i++) {
 		let dot = $(`<div class="dot" data-page="${ i }"></div>`);
@@ -109,22 +111,31 @@ const buildPages = () => {
 	}
 }
 
-const updatePageLabel = () => {
-	let pages = Math.ceil( FILTERED_DATA.length / MAX_ITEMS_PER_PAGE );
+const updateCurrentPage = ( target_page ) => {
+	PAGE = target_page;
 
-	$("#page_label").text( `Página ${ PAGE } de ${ pages }` );
+	$("#book_container").empty();
+
+	let start_index = target_page * MAX_ITEMS_PER_PAGE;
+	let end_index = start_index + MAX_ITEMS_PER_PAGE;
+	let paginated_data = DATA_FILTERED.slice( start_index, end_index );
+
+	paginated_data.map( (item, index) => {
+		$("#book_container").append( buildBookCard( item ) );
+	});
+
+	let pages = Math.ceil( DATA_FILTERED.length / MAX_ITEMS_PER_PAGE );
+	$("#page_label").text( `Página ${ PAGE + 1 } de ${ pages }` );
 }
 
 const reloadBooks = () => {
-	$("#book_container").empty();
 	$("#page_container").empty();
-	$("#page_label").text('');
 
 	let filter = $('#search').val();
 	filter = `${ filter }`.trim().toLowerCase();
 
 	if ( filter.length > 0) {
-		FILTERED_DATA = DEFAULT_DATA.filter( ( book ) => {
+		DATA_FILTERED = DATA_DEFAULT.filter( ( book ) => {
 			let author_full_name = `${ book.author_lastname_1 } ${ book.author_lastname_2 } ${ book.author_name_1 } ${ book.author_name_2 }`.trim();
 			let title_contains_filter = book.title.toLowerCase().indexOf( filter ) >= 0;
 			let author_contains_filter = author_full_name.toLowerCase().indexOf( filter ) >= 0;
@@ -133,16 +144,11 @@ const reloadBooks = () => {
 		});
 	}
 	else {
-		FILTERED_DATA = DEFAULT_DATA.slice( 0, MAX_ITEMS_PER_PAGE );
+		DATA_FILTERED = DATA_DEFAULT;
 	}
 
-	FILTERED_DATA.map( (item ,index) => {
-		let x = buildBookCard( item );
-		$("#book_container").append( x );
-	});
-
 	buildPages();
-	updatePageLabel();
+	updateCurrentPage( 0 );
 }
 
 $(document).on( 'blur', '#search', reloadBooks);
@@ -167,6 +173,13 @@ $(document).on( 'click', '.book', ( ev ) => {
 	});
 
 	createFullScreenBlock( url );
+});
+
+$(document).on( 'click', '.dot', ( ev ) => {
+	let target = $( ev.currentTarget );
+	let index = parseInt( target.data( 'page' ), 10 );
+
+	updateCurrentPage( index );
 });
 
 DOMReady(async function() {

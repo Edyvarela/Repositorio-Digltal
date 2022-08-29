@@ -42,6 +42,8 @@ textarea {
     width: 100%;
     height: 100vh;
     background-image: url(../IMAGES/BG-Banner-Principal-01-Y-02.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-bottom: 100px;
 }
 
