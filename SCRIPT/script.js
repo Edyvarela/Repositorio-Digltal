@@ -13,7 +13,7 @@ const FAKE_COVERS = [
 	'https://s3.gomedia.us/wp-content/uploads/2018/02/3.png',
 	'https://imusic.b-cdn.net/images/item/original/098/9786073807098.jpg'
 ];
-const MAX_ITEMS_PER_PAGE = 10;
+const MAX_ITEMS_PER_PAGE = 4;
 const PAGE = 0;
 
 const DOMReady = (callback) => {
@@ -94,17 +94,58 @@ const loadDefaultData = () => {
 	  	},
 	  	complete: ( data ) => {
 	  		DEFAULT_DATA = result;
+
 	  		reloadBooks();
 	  	}
 	});
 }
 
+const buildPages = () => {
+	let pages = Math.ceil( DEFAULT_DATA.length / MAX_ITEMS_PER_PAGE );
+
+	for (let i=0; i < pages; i++) {
+		let dot = $(`<div class="dot" data-page="${ i }"></div>`);
+		$("#page_container").append( dot );
+	}
+}
+
+const updatePageLabel = () => {
+	let pages = Math.ceil( FILTERED_DATA.length / MAX_ITEMS_PER_PAGE );
+
+	$("#page_label").text( `Página ${ PAGE } de ${ pages }` );
+}
+
 const reloadBooks = () => {
-	DEFAULT_DATA.map( (item ,index) => {
+	$("#book_container").empty();
+	$("#page_container").empty();
+	$("#page_label").text('');
+
+	let filter = $('#search').val();
+	filter = `${ filter }`.trim().toLowerCase();
+
+	if ( filter.length > 0) {
+		FILTERED_DATA = DEFAULT_DATA.filter( ( book ) => {
+			let author_full_name = `${ book.author_lastname_1 } ${ book.author_lastname_2 } ${ book.author_name_1 } ${ book.author_name_2 }`.trim();
+			let title_contains_filter = book.title.toLowerCase().indexOf( filter ) >= 0;
+			let author_contains_filter = author_full_name.toLowerCase().indexOf( filter ) >= 0;
+
+			return author_contains_filter || title_contains_filter;
+		});
+	}
+	else {
+		FILTERED_DATA = DEFAULT_DATA.slice( 0, MAX_ITEMS_PER_PAGE );
+	}
+
+	FILTERED_DATA.map( (item ,index) => {
 		let x = buildBookCard( item );
 		$("#book_container").append( x );
 	});
+
+	buildPages();
+	updatePageLabel();
 }
+
+$(document).on( 'blur', '#search', reloadBooks);
 
 $(document).on( 'click', '.full_screen_pdf_viewer', ( ev ) => {
 	let target = $( ev.currentTarget );

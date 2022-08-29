@@ -7,21 +7,24 @@
 		<title>Repositorio Digital </title>
 
 		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 		<link rel="stylesheet" href="./STYLE/style.css">
+		<link rel="stylesheet" href="./STYLE/alternate.css">
 		<script type="text/javascript" src="./SCRIPT/script.js"></script>
 	</head>
 	<body>
 		<div class="Background">
 			<header>
-				<nav>
-					<ul class="nav-menu">
-						<li><a class="active" href="./index.html">Home</a></li>
-						<li><a href="./PAGES/Nosotros.html">Nosotros </a></li>
-						<li><a href="">Contacto </a></li>
-					</ul>
-				</nav>
-			</header>
+	            <nav>
+	                <ul class="nav-menu">
+	                    <li><a class="active" href="./index.html">Home</a></li>
+	                    <li><a href="./PAGES/Nosotros.html">Nosotros </a></li>
+	                    <li><a href="">Contacto </a></li>
+	                    <li><a href="./PAGES/Intranet.html">Intranet </a></li>
+	                </ul>
+	            </nav>
+	        </header>
 
 			<div class="logos">
 				<a href="./PAGES/Nosotros.html"><img class="logo2" src="./IMAGES/logo repositorio digital 01-ai.svg" alt="Logo repositorio"></a>
@@ -33,7 +36,7 @@
 					<div style="align-items: center; background-color: red; display: flex; justify-content: center; width: 50px;">
 						<img src="./IMAGES/icono_busqueda.svg" alt="Iconsearch" style="height: 30px; width: auto; object-fit: contain; pointer-events: none;">
 					</div>
-					<input style="border: none; flex: 1; text-align: center;" placeholder="Buscar..." />
+					<input id="search" style="border: none; flex: 1; text-align: center;" placeholder="Buscar..." />
 				</div>
 			</div>
 
@@ -47,6 +50,10 @@
 
 			<div>
 				<div id="book_container" class="container"></div>
+				<div style="align-items: center; display: flex; flex-direction: column; justify-content: center;">
+					<label id="page_label"></label>
+					<div id="page_container"></div>
+				</div>
 			</div>
 
 			<div class="seccion1">
@@ -135,14 +142,34 @@
 				</div>
 			</div>
 
-			<div class="video">
-				<h1 class="titulo-video">Seccion de video</h1>
-				<iframe class="diputados" width="1536" height="864" src="https://www.youtube.com/embed/58GnIR3lEKA"
-					title="En los foros de la #ReformaEléctrica se realizó un debate abierto y plural" frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen>
-				</iframe>
-			</div>
+			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+	            <div class="carousel-inner">
+	                <div class="carousel-item active">
+	                    <iframe class="d-block w-100" width="1000" height="600"
+	                        src="https://www.youtube.com/embed/GSf8U-idyIw"
+	                        title="Conmemoración de los 40 años de la investigación parlamentaria" frameborder="0"
+	                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+	                        allowfullscreen></iframe>
+	                </div>
+	                <div class="carousel-item active">
+	                    <iframe class="d-block w-100" width="1000" height="600"
+	                        src="https://www.youtube.com/embed/rfI0uZhhsOU"
+	                        title="Centro de Estudios de las Finanzas Públicas" frameborder="0"
+	                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+	                        allowfullscreen></iframe>
+	                </div>
+	            </div>
+	            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+	                data-bs-slide="prev">
+	                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	                <span class="visually-hidden">Previous</span>
+	            </button>
+	            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+	                data-bs-slide="next">
+	                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	                <span class="visually-hidden">Next</span>
+	            </button>
+	        </div>
 
 			<section class="footer">
 				<div>
