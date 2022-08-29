@@ -7,6 +7,8 @@ element {
 }
 
 input {
+    font-size: 20px !important;
+    height: 40px !important;
     text-decoration: none;
 }
 
