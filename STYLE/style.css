@@ -48,10 +48,17 @@ textarea {
 }
 
 .Background2 {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background-image: url(https://wallpapercave.com/wp/wp2744845.jpg);
+    background-image: url(../IMAGES/BG-Banner-Principal-01-Y-02.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-bottom: 100px;
+
+    
+    
+    
+
 }
 .Background3 {
     width: 100vw;
@@ -74,7 +81,6 @@ nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #545d7a;
     opacity: 50%;
 
 
@@ -91,7 +97,6 @@ nav {
     display: flex;
     justify-content: center;
     margin-right: 64px;
-    background-color: gray;
     padding: 16px;
     border-radius: 8px;
 
@@ -107,7 +112,7 @@ nav {
 .logos {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 280px;
 }
 
 .logos img {
@@ -127,15 +132,21 @@ nav {
     display: flex;
     justify-content: center;
     margin-top: 56px;
-    margin-bottom: 16px
+    margin-bottom: 0px
 }
 
-.tittle h1 {
-    color: black;
-    text-decoration: underline
+.tittle h3 {
+    color: #191919;
+    
 }
 
+h4 {
+    text-align: center;
+}
 
+.cards {
+    margin-top: 80px;
+}
 
 .Container-search {
     display: flex;
@@ -196,7 +207,7 @@ textarea {
     font-size: 14px;
     padding: 16px;
     border: 1px;
-    border-color: black;
+    border-color: #191919;
     text-align: start;
 
 }
@@ -237,7 +248,7 @@ h2 {
 }
 
 .seccion1 {
-    background-color: black;
+    background-color: #191919;
     padding: 80px;
 }
 
@@ -245,10 +256,10 @@ h2 {
     text-align: start;
     font-size: 16px;
     color: white;
-    padding-left: 150px;
-    padding-right: 150px;
     padding-top: 16px;
     padding-left: 16px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .parrafos {
@@ -292,7 +303,7 @@ button {
 .Texto {
     padding: 16px;
     text-align: start;
-    color: black;
+    color: #191919;
 }
 
 h1 {
@@ -310,9 +321,9 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #191919;
     padding: 80px;
-    background-color: black;
+    background-color: #191919;
     width: 100%;
     margin-top: 16px;
     margin-bottom: 16px;
@@ -326,8 +337,13 @@ h1 {
 .Logomono {
     display: flex;
     justify-content: end;
-    margin-top: 80px;
-    padding-right: 80px;
+    margin-top: 200px;
+    padding-right: 16px;
+}
+
+.seccionvideo {
+    padding-top: 50px;
+    padding-bottom: 60px;
 }
 
 .footer {
@@ -335,7 +351,7 @@ h1 {
     padding-bottom: 80px;
     display: flex;
     justify-content: space-around;
-    background-color: black;
+    background-color: #191919;
 
 }
 
@@ -488,15 +504,22 @@ body {
 
 
 .Overlay {
-    background-color: aliceblue;
     padding: 100px;
     opacity: 95%;
+}
+
+.Overlay div {
+    padding-top: 56px;
+    padding-bottom: 16px;
+    background-color: white;
+    border-radius: 40px;
 }
 
 .Overlay div p {
     text-align: start;
     padding-top: 16px;
     padding-left: 16px;
+    
 }
 
 .Overlay div h2 {
