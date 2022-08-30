@@ -150,9 +150,15 @@ const buildSearchResult = ( book ) => {
 	<div class='search_result'>
 		<h2 style='color: black'>${ book.title }</h2>
 		<a style='cursor: pointer;' href='${ book.url }'/>${ book.url }</a>
-		<label>${ book.collection }</label>
-		<label>${ author_full_name }</label>
-		<label>${ book.document_type }</label>
+		<div style="display: flex; flex-direction: row;">
+			<label>${ book.institution }</label>
+			<label style='margin-left: 20px;'>${ book.collection }</label>
+		</div>
+		<label style="font-weight: bold;">${ author_full_name }</label>
+		<div style="display: flex; flex-direction: row;">
+			<label>${ book.document_type }</label>
+			<label style='margin-left: 20px;'>${ book.year }</label>
+		</div>
 	</div>
 	`);
 }
