@@ -68,3 +68,22 @@ input:focus {
     height: 100%;
     width: 100%;
 }
+
+.search_result {
+    align-items: flex-start;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e7e7e7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 30px;
+    width: 100%;
+}
+
+.search_result h2 {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+}

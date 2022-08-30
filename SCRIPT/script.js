@@ -45,9 +45,9 @@ const createFullScreenBlock = ( file ) => {
 	block.fadeOut( 0 ).fadeIn();
 }
 
+
 const buildBookCard = ( book ) => {
 	let author_full_name = `${ book.author_lastname_1 } ${ book.author_lastname_2 } ${ book.author_name_1 } ${ book.author_name_2 }`.trim();
-
 
 	return $(`
 	<div class='card book' data-file='${ book.url }'>
@@ -60,14 +60,6 @@ const buildBookCard = ( book ) => {
 			<p style='margin-top: 8px;'>
 				Coleccion: ${ book.collection }
 			</p>
-			<div class='user'>
-				<img src='https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg' alt='user' />
-				<div class='user-info'>
-					<h5> Autor: ${ author_full_name }</h5>
-					<small>Publicado: ${ book.month ? book.month : '––' }/${ book.year }</small>
-					<small>${ book.institution }</small>
-				</div>
-			</div>
 		</div>
 	</div>
 	`);
@@ -151,7 +143,47 @@ const reloadBooks = () => {
 	updateCurrentPage( 0 );
 }
 
-$(document).on( 'blur', '#search', reloadBooks);
+const buildSearchResult = ( book ) => {
+	let author_full_name = `${ book.author_lastname_1 } ${ book.author_lastname_2 } ${ book.author_name_1 } ${ book.author_name_2 }`.trim();
+
+	return $(`
+	<div class='search_result'>
+		<h2 style='color: black'>${ book.title }</h2>
+		<a style='cursor: pointer;' href='${ book.url }'/>${ book.url }</a>
+		<label>${ book.collection }</label>
+		<label>${ author_full_name }</label>
+		<label>${ book.document_type }</label>
+	</div>
+	`);
+}
+
+const getFilteredResults = () => {
+	$('#search_results').empty();
+
+	let filter = $('#search').val();
+	filter = `${ filter }`.trim().toLowerCase();
+
+	if ( filter.length > 0) {
+		let filtered = DATA_DEFAULT.filter( ( book ) => {
+			let author_full_name = `${ book.author_lastname_1 } ${ book.author_lastname_2 } ${ book.author_name_1 } ${ book.author_name_2 }`.trim();
+			let title_contains_filter = book.title.toLowerCase().indexOf( filter ) >= 0;
+			let author_contains_filter = author_full_name.toLowerCase().indexOf( filter ) >= 0;
+
+			return author_contains_filter || title_contains_filter;
+		});
+
+		$('#search_section').fadeIn();
+
+		filtered.map( (item, index) => {
+			$("#search_results").append( buildSearchResult( item ) );
+		});
+	}
+	else {
+		$('#search_section').fadeOut();
+	}
+}
+
+$(document).on( 'blur', '#search', getFilteredResults);
 
 $(document).on( 'click', '.full_screen_pdf_viewer', ( ev ) => {
 	let target = $( ev.currentTarget );
