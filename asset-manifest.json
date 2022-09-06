@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6deb3300.css",
+    "main.js": "/static/js/main.17cd32f9.js",
+    "static/js/787.626aad59.chunk.js": "/static/js/787.626aad59.chunk.js",
+    "static/media/home-bg.png": "/static/media/home-bg.48e08e2c7eb27897f8c7.png",
+    "static/media/topic-01.png": "/static/media/topic-01.1ac314f5e241991b8aed.png",
+    "static/media/topic-04.png": "/static/media/topic-04.677b7277b6ed1ea1add3.png",
+    "static/media/topic-02.png": "/static/media/topic-02.5825a82710de55f0996e.png",
+    "static/media/topic-03.png": "/static/media/topic-03.ffe227b2f4b5235950cc.png",
+    "static/media/home-politicians-logo.png": "/static/media/home-politicians-logo.6b81883ff5d674c84ad0.png",
+    "static/media/about-logo.png": "/static/media/about-logo.e7ebb2cf1002ac2aab5a.png",
+    "static/media/home-repo-logo.png": "/static/media/home-repo-logo.012b0a6912c6804a8fca.png",
+    "index.html": "/index.html",
+    "main.6deb3300.css.map": "/static/css/main.6deb3300.css.map",
+    "main.17cd32f9.js.map": "/static/js/main.17cd32f9.js.map",
+    "787.626aad59.chunk.js.map": "/static/js/787.626aad59.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6deb3300.css",
+    "static/js/main.17cd32f9.js"
+  ]
+}
